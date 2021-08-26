@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleBackupData
 {
-    interface IReadOptions
+    interface ILogger
     {
-        public Task<bool> ReadOptionsAsync();
-        public void GoLogs();
+        public Task<bool> logs(Exception ex);
+        public Task<bool> logs(string infoLog);
     }
 }

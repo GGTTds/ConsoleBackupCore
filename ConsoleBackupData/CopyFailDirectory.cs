@@ -8,6 +8,7 @@ namespace ConsoleBackupData
 {
      public class CopyFailDirectory : ICopyFailDirectory
     {
+        Logger _log = new Logger();
         public async Task<bool> CopyFailAsync()
         {
             try
@@ -19,7 +20,11 @@ namespace ConsoleBackupData
                 {
                    using (FileStream v = new FileStream(NameFail, FileMode.Open))
                     {
-                        Console.WriteLine($"Копирование файла {NameFail}");
+                        if (GlobalData.lvlLogs == 2)
+                        {
+                             await _log.logs($"Копирование файла {NameFail}");
+                            Console.WriteLine("Логи записаны");
+                        }
                         using (FileStream r = File.Create(CopyHere + NameFail.Substring(NameFail.LastIndexOf('\\'))))
                         {
                             await v.CopyToAsync(r);
@@ -28,8 +33,10 @@ namespace ConsoleBackupData
                 }
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                if (GlobalData.lvlLogs == 1)
+                    await _log.logs(ex);
                 return false;
             }
         }
