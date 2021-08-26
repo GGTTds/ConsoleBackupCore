@@ -23,7 +23,7 @@ namespace ConsoleBackupData
                         GlobalData.OptionData[i] = s.ToString();
                         i++;
                     }
-                   await _log.logsDebug("Считывание файла option.txt");
+                   await _log.logsDebugAsync("Считывание файла option.txt");
                 }
                 await Task.Run(() => GoLogs());
                 return true;
@@ -31,7 +31,7 @@ namespace ConsoleBackupData
             catch (Exception ex)
             {
                 if(GlobalData.lvlLogs == 1)
-                await _log.logs(ex);
+                await _log.logsAsync(ex);
                 return false;
             }
 

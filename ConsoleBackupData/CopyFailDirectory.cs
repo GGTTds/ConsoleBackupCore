@@ -20,17 +20,17 @@ namespace ConsoleBackupData
                 {
                    using (FileStream v = new FileStream(NameFail, FileMode.Open))
                     {
-                        await _log.logsDebug($"Копирование файла {NameFail} в {CopyHere}");
+                        await _log.logsDebugAsync($"Копирование файла {NameFail} в {CopyHere}");
                         if (GlobalData.lvlLogs == 2)
                         {
-                             await _log.logs($"Копирование файла {NameFail}");
+                             await _log.logsAsync($"Копирование файла {NameFail}");
                             Console.WriteLine("Логи записаны");
                         }
                         using (FileStream r = File.Create(CopyHere + NameFail.Substring(NameFail.LastIndexOf('\\'))))
                         {
                             await v.CopyToAsync(r);
                         }
-                        await _log.logsDebug("Копирование завершено");
+                        await _log.logsDebugAsync("Копирование завершено");
                     }
                 }
                 return true;
@@ -38,7 +38,7 @@ namespace ConsoleBackupData
             catch (Exception ex)
             {
                 if (GlobalData.lvlLogs == 1)
-                    await _log.logs(ex);
+                    await _log.logsAsync(ex);
                 return false;
             }
         }

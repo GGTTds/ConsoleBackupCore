@@ -15,10 +15,10 @@ namespace ConsoleBackupData
 
         public static async Task Start()
         {
-            await Task.Run(() => L.logsDebug("Старт приложения"));
+            await Task.Run(() => L.logsDebugAsync("Старт приложения"));
             await Task.Run(() => v.ReadOptionsAsync());
             await Task.Run(() => t.CopyFailAsync());
-            await Task.Run(() => L.logsDebug("завершение приложения"));
+            await Task.Run(() => L.logsDebugAsync("завершение приложения"));
             if(GlobalData.lvlLogs != 0)
                 Console.WriteLine("Логи созданы");
             Console.WriteLine("Копирвание завершено.Для завершение нажмите на любую кнопку");

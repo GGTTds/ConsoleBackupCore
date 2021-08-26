@@ -8,7 +8,7 @@ namespace ConsoleBackupData
 {
      public class Logger : ILogger
     {
-        public async Task<bool> logs(Exception ex)
+        public async Task<bool> logsAsync(Exception ex)
         {
             try
             {
@@ -23,7 +23,7 @@ namespace ConsoleBackupData
                 return false;
             }
         }
-        public async Task<bool> logs(string InfoLog)
+        public async Task<bool> logsAsync(string InfoLog)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace ConsoleBackupData
                 return false;
             }
         }
-        public async Task<bool> logsDebug(string log)
+        public async Task<bool> logsDebugAsync(string log)
         {
             try
             {

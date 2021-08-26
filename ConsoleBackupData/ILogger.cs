@@ -7,8 +7,8 @@ namespace ConsoleBackupData
 {
     interface ILogger
     {
-        public Task<bool> logs(Exception ex);
-        public Task<bool> logs(string infoLog);
-        public Task<bool> logsDebug(string log);
+        public Task<bool> logsAsync(Exception ex);
+        public Task<bool> logsAsync(string infoLog);
+        public Task<bool> logsDebugAsync(string log);
     }
 }
