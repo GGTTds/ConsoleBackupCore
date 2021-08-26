@@ -20,6 +20,7 @@ namespace ConsoleBackupData
                 {
                    using (FileStream v = new FileStream(NameFail, FileMode.Open))
                     {
+                        await _log.logsDebug($"Копирование файла {NameFail} в {CopyHere}");
                         if (GlobalData.lvlLogs == 2)
                         {
                              await _log.logs($"Копирование файла {NameFail}");
@@ -29,6 +30,7 @@ namespace ConsoleBackupData
                         {
                             await v.CopyToAsync(r);
                         }
+                        await _log.logsDebug("Копирование завершено");
                     }
                 }
                 return true;

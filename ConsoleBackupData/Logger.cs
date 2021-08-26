@@ -12,7 +12,7 @@ namespace ConsoleBackupData
         {
             try
             {
-                using (StreamWriter v = new StreamWriter(GlobalData.OptionData[0] + "logs.txt", true))
+                using (StreamWriter v = new StreamWriter(GlobalData.OptionData[0] + "logsError.txt", true))
                 {
                      await v.WriteLineAsync(ex.Message);
                 }
@@ -27,9 +27,29 @@ namespace ConsoleBackupData
         {
             try
             {
-                using (StreamWriter v = new StreamWriter(@$"{GlobalData.OptionData[0]}{DateTime.Now.ToLongDateString()}\" + "logs.txt", true))
+                using (StreamWriter v = new StreamWriter(@$"{GlobalData.OptionData[0]}{DateTime.Now.ToLongDateString()}\" + "logsInfo.txt", false))
                 {
                     await v.WriteLineAsync(InfoLog);
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public async Task<bool> logsDebug(string log)
+        {
+            try
+            {
+                StringBuilder BilderInfo = new StringBuilder();
+                BilderInfo.Append(log);
+                if(GlobalData.lvlLogs == 3)
+                {
+                    using (StreamWriter v = new StreamWriter(@$"{GlobalData.OptionData[0]}{DateTime.Now.ToLongDateString()}\" + "logsDebug.txt", true))
+                    {
+                        await v.WriteLineAsync(BilderInfo.ToString());
+                    }
                 }
                 return true;
             }

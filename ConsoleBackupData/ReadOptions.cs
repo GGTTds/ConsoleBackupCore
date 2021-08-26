@@ -23,6 +23,7 @@ namespace ConsoleBackupData
                         GlobalData.OptionData[i] = s.ToString();
                         i++;
                     }
+                   await _log.logsDebug("Считывание файла option.txt");
                 }
                 await Task.Run(() => GoLogs());
                 return true;
@@ -43,13 +44,16 @@ namespace ConsoleBackupData
                 GlobalData.lvlLogs = 1;
                 Console.WriteLine("Логи: Error");
             }
+            if (GlobalData.OptionData.Contains("Debug") == true)
+            {
+                GlobalData.lvlLogs = 3;
+                Console.WriteLine("Логи: Debug");
+            }
             if (GlobalData.OptionData.Contains("Info") == true)
             {
                 GlobalData.lvlLogs = 2;
                 Console.WriteLine("Логи: Info");
             }
-            if (GlobalData.OptionData.Equals("Debug"))
-                GlobalData.lvlLogs = 3;
         }
     }
 }
