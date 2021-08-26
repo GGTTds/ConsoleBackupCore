@@ -8,7 +8,9 @@ namespace ConsoleBackupData
         static async Task Main(string[] args)
         {
             ReadOptions v = new ReadOptions();
+            CopyFailDirectory t = new CopyFailDirectory();
             await Task.Run(() => v.ReadOptionsAsync());
+            await Task.Run(() => t.CopyFailAsync());
             
         }
     }
