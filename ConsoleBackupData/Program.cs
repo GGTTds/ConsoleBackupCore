@@ -7,6 +7,8 @@ namespace ConsoleBackupData
     {
         static async Task Main(string[] args)
         {
+            ReadOptions v = new ReadOptions();
+            await Task.Run(() => v.ReadOptionsAsync());
             
         }
     }
